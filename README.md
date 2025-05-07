@@ -31,7 +31,7 @@ Presents Worakrit's professional focus on Software Engineering processes, person
 
 ### Work Experience
 Chronological list of professional experiences including:
-- Current personal development (2023-Today)
+- Fulltime Father (2023-Today)
 - Software Developer at Petchsrivichai Enterprise (2022-2023)
 - Firmware Developer at Zensorium (2022)
 - Embedded System Team Leader at NDR Solution (2018-2022)
