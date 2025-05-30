@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ウォラクリット シッティリット - ソフトウェアエンジニア</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --container-width: 1000px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .highlight {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        .nav-links li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links li a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .profile-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .experience-item {
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+        
+        .company {
+            font-weight: 500;
+        }
+        
+        .date {
+            color: #777;
+        }
+        
+        .experience-details ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+        
+        .experience-details li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--light-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #ddd;
+        }
+        
+        .awards {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .awards ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+        
+        .awards li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .contact-text a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+            }
+            
+            .date {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img class="profile-img" src="my_pic.jpg" alt="ウォラクリット シッティリット">
+            <h1>ウォラクリット シッティリット</h1>
+            <p class="title">ソフトウェアエンジニア・組み込みシステムスペシャリスト</p>
+            <p>工学学士 コンピューター工学専攻（GPA 3.17）- プリンス・オブ・ソンクラー大学、タイ</p>
+            <p>データサイエンス修了証 - タマサート大学、タイ</p>
+            <div class="highlight">
+                C++（上位30%）| Python | アジャイル | ERP | 日本語（N3）| TOEIC（635）
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#about">自己紹介</a></li>
+            <li><a href="#experience">職歴</a></li>
+            <li><a href="#awards">受賞歴</a></li>
+            <li><a href="#contact">連絡先</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <h2>自己紹介</h2>
+            <div class="profile-content">
+                <p>私は堅牢なソフトウェア工学プロセスを適用し、生産性とソフトウェア品質の向上に焦点を当てたプログラマーです：</p>
+                <div class="skills">
+                    <span class="skill-tag">より良い要求分析のためのアジャイル</span>
+                    <span class="skill-tag">生産性向上のための継続的インテグレーション</span>
+                    <span class="skill-tag">強化されたソフトウェア管理のためのバージョン管理</span>
+                    <span class="skill-tag">ソフトウェア品質のための単体テスト</span>
+                    <span class="skill-tag">プロセス効率化のための自動化テスト</span>
+                </div>
+                
+                <p style="margin-top: 1.5rem;">私は科学を貧困と飢餓を解決するための道具として信じており、積極的な影響を与える技術の開発に情熱を注いでいます。</p>
+            
+                <div class="mbti-section" style="margin-top: 1.5rem; padding: 1.2rem; background: linear-gradient(to right, #f0f7ff, #ffffff); border-radius: 6px; box-shadow: 0 2px 10px rgba(52, 152, 219, 0.1);">
+                    <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+                        <span style="background-color: var(--secondary-color); color: white; padding: 0.3rem 0.6rem; border-radius: 4px; font-weight: bold; margin-right: 0.8rem;">ENTJ</span>
+                        <h3 style="color: var(--primary-color); margin: 0;">統率者</h3>
+                    </div>
+                    
+                    <p>私のENTJの性格特性は、以下の点でエンジニアリングアプローチを強化します：</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1rem 0;">
+                        <div>
+                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">戦略的ビジョン</h4>
+                            <p style="margin: 0; font-size: 0.95rem;">複雑な技術実装のための実行可能なステップを計画しながら大局を見る</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">決断力のあるリーダーシップ</h4>
+                            <p style="margin: 0; font-size: 0.95rem;">自信を持った技術的決定を下し、困難なプロジェクトフェーズでチームを導く</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">効率性への焦点</h4>
+                            <p style="margin: 0; font-size: 0.95rem;">パフォーマンス向上のためにプロセス、システム、コードベースを継続的に最適化</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">結果志向</h4>
+                            <p style="margin: 0; font-size: 0.95rem;">決意と構造化された実行でプロジェクトをコンセプトから完成まで推進</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="container">
+            <h2>職歴</h2>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">専業主夫および個人的身体リハビリテーション</div>
+                        <div class="company">息子</div>
+                    </div>
+                    <div class="date">2023年 - 現在</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>息子の育児</li>
+                        <li>身体リハビリテーション</li>
+                        <li>ChatGPTとの対話</li>
+                        <li>Claude</li>
+                        <li>フロントエンドの学習に挑戦</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">ソフトウェア開発者（ERP）</div>
+                        <div class="company">ペッチシーウィチャイエンタープライズ</div>
+                    </div>
+                    <div class="date">2022年 - 2023年</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>MS Dynamics 365実装</li>
+                        <li>IPO監査（セキュリティポリシー）</li>
+                        <li>データ移行</li>
+                        <li>Power BIアプリ開発</li>
+                        <li>要求およびシステム分析</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">ファームウェア開発者</div>
+                        <div class="company">Zensorium</div>
+                    </div>
+                    <div class="date">2022年（4ヶ月間）</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>LCDおよびBluetooth統合</li>
+                        <li>ファームウェアコード開発（C++）</li>
+                        <li>AI生成コード実装（C++、MATLAB）</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">組み込みシステムチームリーダー</div>
+                        <div class="company">NDRソリューション</div>
+                    </div>
+                    <div class="date">2018年 - 2022年</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>5-7名のチームメンバーと年間5-8プロジェクトを管理</li>
+                        <li>C++、Python、Node.jsでの開発</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">組み込みシステムブリッジエンジニア</div>
+                        <div class="company">NDRソリューション</div>
+                    </div>
+                    <div class="date">2016年 - 2018年</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>要求分析</li>
+                        <li>日本語からタイ語への翻訳</li>
+                        <li>日本での業務アサインメント</li>
+                        <li>STM32ファームウェアハードウェアテスト</li>
+                        <li>ハードウェアデモソフトウェアC++.Netアプリケーション開発</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">組み込みシステム開発者</div>
+                        <div class="company">NDRソリューション</div>
+                    </div>
+                    <div class="date">2013年 - 2016年</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>ハードウェアテストおよびデモファームウェア/アプリケーション開発</li>
+                        <li>データ集約ユニットおよびデータロガー実装</li>
+                        <li>C++ STM32ファームウェア開発</li>
+                        <li>Linuxアプリケーション開発</li>
+                        <li>MCU周辺機器統合（SPI、I2C、FSMC、Ethernet、Socket、SOAP）</li>
+                        <li>BluetoothおよびIoTフィールドバス統合（Zigbee、LoRA、Bluetooth、MQTT）</li>
+                        <li>Pythonアプリケーションを使用した組み込みLinux画像処理</li>
+                        <li>データベースSQLおよびネットワークプログラミング</li>
+                        <li>OpenCVを使用した画像処理</li>
+                        <li>Visual C++/C#（.NET 4.0）でのGUIサポートソフトウェア</li>
+                        <li>C++、Python、Appiumを使用した自動化テスト</li>
+                        <li>DevOps CI/CDサーバー（Jenkins）</li>
+                        <li>ERPツール実装（Odoo）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="awards">
+        <div class="container">
+            <h2>受賞歴・表彰</h2>
+            <div class="awards">
+                <ul>
+                    <li>ACM ICPC地域/全国プログラミングコンテスト（2012年/2011年）</li>
+                    <li>TESAトップガンラリー（2011年）</li>
+                    <li>ロボット設計コンテスト南部地区（2011年）</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>連絡先情報</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="icon">📱</div>
+                    <div class="contact-text">
+                        <strong>電話番号</strong><br>
+                        <a href="tel:+66824284779">082-428-4779</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">📧</div>
+                    <div class="contact-text">
+                        <strong>メールアドレス</strong><br>
+                        <a href="mailto:kritsitti.coe@gmail.com">kritsitti.coe@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">🔗</div>
+                    <div class="contact-text">
+                        <strong>LinkedIn</strong><br>
+                        <a href="https://www.linkedin.com/in/worakrit-sittirit-8258a7225/" target="_blank">worakrit-sittirit-8258a7225</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">💻</div>
+                    <div class="contact-text">
+                        <strong>GitHub</strong><br>
+                        <a href="https://github.com/worakrit-sittirit" target="_blank">github.com/worakrit-sittirit</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">🌐</div>
+                    <div class="contact-text">
+                        <strong>ブログ</strong><br>
+                        <a href="#" target="_blank">私のブログ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ウォラクリット シッティリット. All rights reserved.</p>
+            <div class="claude-badge">
+                <a href="https://www.anthropic.com/claude" target="_blank">
+                    Powered by Claude
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

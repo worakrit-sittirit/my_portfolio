@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วรกฤษฎ์ สิทธิฤทธิ์ - วิศวกรซอฟต์แวร์</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --container-width: 1000px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans Thai', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .highlight {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        .nav-links li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links li a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .profile-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .experience-item {
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+        
+        .company {
+            font-weight: 500;
+        }
+        
+        .date {
+            color: #777;
+        }
+        
+        .experience-details ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+        
+        .experience-details li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--light-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #ddd;
+        }
+        
+        .awards {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .awards ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+        
+        .awards li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .contact-text a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+            }
+            
+            .date {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img class="profile-img" src="my_pic.jpg" alt="วรกฤษฎ์ สิทธิฤทธิ์">
+            <h1>วรกฤษฎ์ สิทธิฤทธิ์</h1>
+            <p class="title">วิศวกรซอฟต์แวร์ และผู้เชี่ยวชาญระบบฝังตัว</p>
+            <p>วิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรมคอมพิวเตอร์ (เกรดเฉลี่ย 3.17) - มหาวิทยาลัยสงขลานครินทร์</p>
+            <p>ประกาศนียบัตรวิทยาศาสตร์ข้อมูล - มหาวิทยาลัยธรรมศาสตร์</p>
+            <div class="highlight">
+                C++ (อันดับ 30% สูงสุด) | Python | Agile | ERP | ภาษาญี่ปุ่น (N3) | TOEIC (635)
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#about">เกี่ยวกับฉัน</a></li>
+            <li><a href="#experience">ประสบการณ์การทำงาน</a></li>
+            <li><a href="#awards">รางวัลและเกียรติยศ</a></li>
+            <li><a href="#contact">ติดต่อ</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <h2>เกี่ยวกับฉัน</h2>
+            <div class="profile-content">
+                <p>ฉันเป็นโปรแกรมเมอร์ที่มุ่งเน้นการนำกระบวนการวิศวกรรมซอฟต์แวร์ที่แข็งแกร่งมาใช้เพื่อปรับปรุงประสิทธิภาพและคุณภาพของซอฟต์แวร์:</p>
+                <div class="skills">
+                    <span class="skill-tag">Agile สำหรับการวิเคราะห์ความต้องการที่ดีขึ้น</span>
+                    <span class="skill-tag">Continuous Integration เพื่อปรับปรุงประสิทธิภาพ</span>
+                    <span class="skill-tag">Version Control เพื่อการจัดการซอฟต์แวร์ที่เหนือกว่า</span>
+                    <span class="skill-tag">Unit Testing เพื่อคุณภาพซอฟต์แวร์</span>
+                    <span class="skill-tag">Automation Testing เพื่อปรับปรุงกระบวนการ</span>
+                </div>
+                
+                <p style="margin-top: 1.5rem;">ฉันเชื่อในวิทยาศาสตร์เป็นเครื่องมือในการแก้ไขปัญหาความยากจนและความอดอยาก และฉันมีความหลงใหลในการพัฒนาเทคโนโลยีที่สร้างผลกระทบเชิงบวก</p>
+            
+                <div class="mbti-section" style="margin-top: 1.5rem; padding: 1.2rem; background: linear-gradient(to right, #f0f7ff, #ffffff); border-radius: 6px; box-shadow: 0 2px 10px rgba(52, 152, 219, 0.1);">
+                    <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+                        <span style="background-color: var(--secondary-color); color: white; padding: 0.3rem 0.6rem; border-radius: 4px; font-weight: bold; margin-right: 0.8rem;">ENTJ</span>
+                        <h3 style="color: var(--primary-color); margin: 0;">ผู้บังคับบัญชา</h3>
+                    </div>
+                    
+                    <p>บุคลิกภาพ ENTJ ของฉันช่วยเสริมแนวทางทางวิศวกรรมด้วย:</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1rem 0;">
+                        <div>
+                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">วิสัยทัศน์เชิงกลยุทธ์</h4>
+                            <p style="margin: 0; font-size: 0.95rem;">มองเห็นภาพรวมขณะวางแผนขั้นตอนที่สามารถดำเนินการได้สำหรับการใช้งานเทคนิคที่ซับซ้อน</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">ภาวะผู้นำที่เด็ดขาด</h4>
+                            <p style="margin: 0; font-size: 0.95rem;">การตัดสินใจทางเทคนิคที่มั่นใจและนำทีมผ่านช่วงโครงการที่ท้าทาย</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">มุ่งเน้นประสิทธิภาพ</h4>
+                            <p style="margin: 0; font-size: 0.95rem;">การปรับปรุงกระบวนการ ระบบ และโค้ดเบสอย่างต่อเนื่องเพื่อประสิทธิภาพที่ดีขึ้น</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">มุ่งเน้นผลลัพธ์</h4>
+                            <p style="margin: 0; font-size: 0.95rem;">ขับเคลื่อนโครงการจากแนวคิดสู่การสำเร็จด้วยความมุ่งมั่นและการดำเนินงานที่มีโครงสร้าง</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="container">
+            <h2>ประสบการณ์การทำงาน</h2>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">พ่อเต็มเวลาและการฟื้นฟูร่างกายส่วนบุคคล</div>
+                        <div class="company">ลูกชายของฉัน</div>
+                    </div>
+                    <div class="date">2023 - ปัจจุบัน</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>เลี้ยงดูลูกชาย</li>
+                        <li>การฟื้นฟูร่างกาย</li>
+                        <li>แชท GPT</li>
+                        <li>Claude</li>
+                        <li>พยายามเรียนรู้ Frontend</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">นักพัฒนาซอฟต์แวร์ (ERP)</div>
+                        <div class="company">เพชรศรีวิชัย เอ็นเตอร์ไพรส์</div>
+                    </div>
+                    <div class="date">2022 - 2023</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>การติดตั้ง MS Dynamics 365</li>
+                        <li>การตรวจสอบ IPO (นโยบายความปลอดภัย)</li>
+                        <li>การย้ายข้อมูล</li>
+                        <li>การพัฒนาแอปพลิเคชัน Power BI</li>
+                        <li>การวิเคราะห์ความต้องการและระบบ</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">นักพัฒนาเฟิร์มแวร์</div>
+                        <div class="company">Zensorium</div>
+                    </div>
+                    <div class="date">2022 (4 เดือน)</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>การรวมระบบ LCD และ Bluetooth</li>
+                        <li>การพัฒนาโค้ดเฟิร์มแวร์ (C++)</li>
+                        <li>การใช้งานโค้ดที่สร้างด้วย AI (C++, MATLAB)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">หัวหน้าทีมระบบฝังตัว</div>
+                        <div class="company">NDR Solution</div>
+                    </div>
+                    <div class="date">2018 - 2022</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>จัดการ 5-8 โครงการต่อปีกับสมาชิกทีม 5-7 คน</li>
+                        <li>การพัฒนาใน C++, Python และ Node.js</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">วิศวกรเชื่อมประสานระบบฝังตัว</div>
+                        <div class="company">NDR Solution</div>
+                    </div>
+                    <div class="date">2016 - 2018</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>การวิเคราะห์ความต้องการ</li>
+                        <li>การแปลภาษาญี่ปุ่นเป็นไทย</li>
+                        <li>การปฏิบัติงานในประเทศญี่ปุ่น</li>
+                        <li>การทดสอบฮาร์ดแวร์เฟิร์มแวร์ STM32</li>
+                        <li>การพัฒนาแอปพลิเคชันซอฟต์แวร์สาธิตฮาร์ดแวร์ C++.Net</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">นักพัฒนาระบบฝังตัว</div>
+                        <div class="company">NDR Solution</div>
+                    </div>
+                    <div class="date">2013 - 2016</div>
+                </div>
+                <div class="experience-details">
+                    <ul>
+                        <li>การพัฒนาเฟิร์มแวร์/แอปพลิเคชันสำหรับการทดสอบและสาธิตฮาร์ดแวร์</li>
+                        <li>การใช้งานหน่วยรวบรวมข้อมูลและเครื่องบันทึกข้อมูล</li>
+                        <li>การพัฒนาเฟิร์มแวร์ C++ STM32</li>
+                        <li>การพัฒนาแอปพลิเคชัน Linux</li>
+                        <li>การรวมอุปกรณ์ต่อพ่วง MCU (SPI, I2C, FSMC, Ethernet, Socket, SOAP)</li>
+                        <li>การรวมระบบ Bluetooth และ IoT fieldbus (Zigbee, LoRA, Bluetooth, MQTT)</li>
+                        <li>การประมวลผลภาพ Embedded Linux ด้วยแอปพลิเคชัน Python</li>
+                        <li>ฐานข้อมูล SQL และการเขียนโปรแกรมเครือข่าย</li>
+                        <li>การประมวลผลภาพด้วย OpenCV</li>
+                        <li>ซอฟต์แวร์สนับสนุน GUI ใน Visual C++/C# (.NET 4.0)</li>
+                        <li>การทดสอบอัตโนมัติด้วย C++, Python, Appium</li>
+                        <li>เซิร์ฟเวอร์ DevOps CI/CD (Jenkins)</li>
+                        <li>การใช้งานเครื่องมือ ERP (Odoo)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="awards">
+        <div class="container">
+            <h2>รางวัลและเกียรติยศ</h2>
+            <div class="awards">
+                <ul>
+                    <li>การแข่งขันการเขียนโปรแกรม ACM IPCP ระดับภูมิภาค/ประเทศ (2012/2011)</li>
+                    <li>TESA top gun rally (2011)</li>
+                    <li>การแข่งขันออกแบบหุ่นยนต์ ภาคใต้ (2011)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>ข้อมูลการติดต่อ</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="icon">📱</div>
+                    <div class="contact-text">
+                        <strong>โทรศัพท์</strong><br>
+                        <a href="tel:+66824284779">082-428-4779</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">📧</div>
+                    <div class="contact-text">
+                        <strong>อีเมล</strong><br>
+                        <a href="mailto:kritsitti.coe@gmail.com">kritsitti.coe@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">🔗</div>
+                    <div class="contact-text">
+                        <strong>LinkedIn</strong><br>
+                        <a href="https://www.linkedin.com/in/worakrit-sittirit-8258a7225/" target="_blank">worakrit-sittirit-8258a7225</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">💻</div>
+                    <div class="contact-text">
+                        <strong>GitHub</strong><br>
+                        <a href="https://github.com/worakrit-sittirit" target="_blank">github.com/worakrit-sittirit</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">🌐</div>
+                    <div class="contact-text">
+                        <strong>บล็อก</strong><br>
+                        <a href="#" target="_blank">บล็อกของฉัน</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 วรกฤษฎ์ สิทธิฤทธิ์ สงวนลิขสิทธิ์</p>
+            <div class="claude-badge">
+                <a href="https://www.anthropic.com/claude" target="_blank">
+                    ขับเคลื่อนโดย Claude
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
