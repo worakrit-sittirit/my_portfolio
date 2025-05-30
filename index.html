@@ -33,10 +33,56 @@
             padding: 0 20px;
         }
         
+        /* Language Selector Styles */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 8px;
+            display: flex;
+            gap: 4px;
+        }
+        
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+        
+        .lang-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .lang-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .flag-emoji {
+            font-size: 16px;
+        }
+        
         header {
             background-color: var(--primary-color);
             color: white;
             padding: 2rem 0;
+            margin-top: 60px;
         }
         
         .header-content {
@@ -234,7 +280,68 @@
             margin-top: 3rem;
         }
         
+        .mbti-section {
+            margin-top: 1.5rem; 
+            padding: 1.2rem; 
+            background: linear-gradient(to right, #f0f7ff, #ffffff); 
+            border-radius: 6px; 
+            box-shadow: 0 2px 10px rgba(52, 152, 219, 0.1);
+        }
+        
+        .mbti-header {
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 0.8rem;
+        }
+        
+        .mbti-badge {
+            background-color: var(--secondary-color); 
+            color: white; 
+            padding: 0.3rem 0.6rem; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            margin-right: 0.8rem;
+        }
+        
+        .mbti-title {
+            color: var(--primary-color); 
+            margin: 0;
+        }
+        
+        .mbti-grid {
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 0.8rem; 
+            margin: 1rem 0;
+        }
+        
+        .mbti-item h4 {
+            color: var(--secondary-color); 
+            margin: 0 0 0.4rem 0; 
+            font-size: 1rem;
+        }
+        
+        .mbti-item p {
+            margin: 0; 
+            font-size: 0.95rem;
+        }
+        
         @media (max-width: 768px) {
+            .language-selector {
+                top: 10px;
+                right: 10px;
+                padding: 6px;
+            }
+            
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            
+            header {
+                margin-top: 70px;
+            }
+            
             .nav-links {
                 flex-direction: column;
             }
@@ -246,16 +353,36 @@
             .date {
                 margin-top: 0.5rem;
             }
+            
+            .mbti-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <a href="#" class="lang-btn active">
+            <span class="flag-emoji">🇺🇸</span>
+            <span>EN</span>
+        </a>
+        <a href="thai_portfolio.html" class="lang-btn">
+            <span class="flag-emoji">🇹🇭</span>
+            <span>TH</span>
+        </a>
+        <a href="japanese_portfolio.html" class="lang-btn">
+            <span class="flag-emoji">🇯🇵</span>
+            <span>JP</span>
+        </a>
+    </div>
+
     <header>
         <div class="container header-content">
             <img class="profile-img" src="my_pic.jpg" alt="Worakrit Sittirit">
-            <h1>WORAKRIT SITTIRIT</h1>
+            <h1>Worakrit Sittirit</h1>
             <p class="title">Software Engineer & Embedded Systems Specialist</p>
-            <p>B.Eng., Computer Engineering (GPA 3.17) - Prince of Songkla University, Thailand</p>
+            <p>Bachelor of Engineering in Computer Engineering (GPA 3.17) - Prince of Songkla University, Thailand</p>
             <p>Certificate in Data Science - Thammasat University, Thailand</p>
             <div class="highlight">
                 C++ (Top 30%) | Python | Agile | ERP | Japanese (N3) | TOEIC (635)
@@ -265,7 +392,7 @@
     
     <nav>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
+            <li><a href="#about">About Me</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#awards">Awards</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -276,40 +403,40 @@
         <div class="container">
             <h2>About Me</h2>
             <div class="profile-content">
-                <p>I'm a programmer focused on applying robust Software Engineering processes to improve productivity and software quality:</p>
+                <p>I am a programmer focused on applying robust software engineering processes to enhance productivity and software quality:</p>
                 <div class="skills">
                     <span class="skill-tag">Agile for better requirement analysis</span>
-                    <span class="skill-tag">Continuous Integration for improved productivity</span>
-                    <span class="skill-tag">Version Control for enhanced software handling</span>
+                    <span class="skill-tag">Continuous Integration for enhanced productivity</span>
+                    <span class="skill-tag">Version Control for superior software management</span>
                     <span class="skill-tag">Unit Testing for software quality</span>
-                    <span class="skill-tag">Automation Testing to streamline processes</span>
+                    <span class="skill-tag">Automation Testing for process enhancement</span>
                 </div>
                 
-                <p style="margin-top: 1.5rem;">I believe in science as a tool to resolve poverty and starvation, and I'm passionate about developing technology that makes a positive impact.</p>
+                <p style="margin-top: 1.5rem;">I believe in science as a tool to solve poverty and hunger, and I'm passionate about developing technology that creates positive impact.</p>
             
-                <div class="mbti-section" style="margin-top: 1.5rem; padding: 1.2rem; background: linear-gradient(to right, #f0f7ff, #ffffff); border-radius: 6px; box-shadow: 0 2px 10px rgba(52, 152, 219, 0.1);">
-                    <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
-                        <span style="background-color: var(--secondary-color); color: white; padding: 0.3rem 0.6rem; border-radius: 4px; font-weight: bold; margin-right: 0.8rem;">ENTJ</span>
-                        <h3 style="color: var(--primary-color); margin: 0;">The Commander</h3>
+                <div class="mbti-section">
+                    <div class="mbti-header">
+                        <span class="mbti-badge">ENTJ</span>
+                        <h3 class="mbti-title">The Commander</h3>
                     </div>
                     
-                    <p>My ENTJ personality traits enhance my engineering approach with:</p>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1rem 0;">
-                        <div>
-                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">Strategic Vision</h4>
-                            <p style="margin: 0; font-size: 0.95rem;">Seeing the big picture while planning actionable steps for complex technical implementations</p>
+                    <p>My ENTJ personality enhances my engineering approach with:</p>
+                    <div class="mbti-grid">
+                        <div class="mbti-item">
+                            <h4>Strategic Vision</h4>
+                            <p>Seeing the big picture while planning actionable steps for complex technical implementations</p>
                         </div>
-                        <div>
-                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">Decisive Leadership</h4>
-                            <p style="margin: 0; font-size: 0.95rem;">Making confident technical decisions and guiding teams through challenging project phases</p>
+                        <div class="mbti-item">
+                            <h4>Decisive Leadership</h4>
+                            <p>Making confident technical decisions and leading teams through challenging project phases</p>
                         </div>
-                        <div>
-                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">Efficiency Focus</h4>
-                            <p style="margin: 0; font-size: 0.95rem;">Continuously optimizing processes, systems, and codebases for improved performance</p>
+                        <div class="mbti-item">
+                            <h4>Efficiency Focus</h4>
+                            <p>Continuously optimizing processes, systems, and codebases for better performance</p>
                         </div>
-                        <div>
-                            <h4 style="color: var(--secondary-color); margin: 0 0 0.4rem 0; font-size: 1rem;">Results-Oriented</h4>
-                            <p style="margin: 0; font-size: 0.95rem;">Driving projects from concept to completion with determination and structured execution</p>
+                        <div class="mbti-item">
+                            <h4>Results-Oriented</h4>
+                            <p>Driving projects from concept to completion with determination and structured execution</p>
                         </div>
                     </div>
                 </div>
@@ -325,18 +452,18 @@
             <div class="experience-item">
                 <div class="experience-header">
                     <div>
-                        <div class="job-title">Fulltime father and personal physical rehabilitation</div>
+                        <div class="job-title">Full-time Father and Personal Physical Rehabilitation</div>
                         <div class="company">My Son</div>
                     </div>
-                    <div class="date">2023 - Today</div>
+                    <div class="date">2023 - Present</div>
                 </div>
                 <div class="experience-details">
                     <ul>
-                        <li>Grow up my son</li>
+                        <li>Raising my son</li>
                         <li>Physical rehabilitation</li>
-                        <li>Chat GPTT</li>
-                        <li>claude</li>
-                        <li>Try to learn frontend</li>
+                        <li>ChatGPT conversations</li>
+                        <li>Claude</li>
+                        <li>Trying to learn Frontend</li>
                     </ul>
                 </div>
             </div>
@@ -345,16 +472,16 @@
                 <div class="experience-header">
                     <div>
                         <div class="job-title">Software Developer (ERP)</div>
-                        <div class="company">Petchsrivichai Enterprise</div>
+                        <div class="company">Petchsriwichai Enterprise</div>
                     </div>
                     <div class="date">2022 - 2023</div>
                 </div>
                 <div class="experience-details">
                     <ul>
                         <li>MS Dynamics 365 implementation</li>
-                        <li>IPO Audition (Security policies)</li>
+                        <li>IPO auditing (security policy)</li>
                         <li>Data migration</li>
-                        <li>Power BI apps development</li>
+                        <li>Power BI app development</li>
                         <li>Requirement and system analysis</li>
                     </ul>
                 </div>
@@ -366,13 +493,13 @@
                         <div class="job-title">Firmware Developer</div>
                         <div class="company">Zensorium</div>
                     </div>
-                    <div class="date">2022 (4 Months)</div>
+                    <div class="date">2022 (4 months)</div>
                 </div>
                 <div class="experience-details">
                     <ul>
                         <li>LCD and Bluetooth integration</li>
                         <li>Firmware code development (C++)</li>
-                        <li>AI Generated Code implementation (C++, MATHLAB)</li>
+                        <li>AI-generated code implementation (C++, MATLAB)</li>
                     </ul>
                 </div>
             </div>
@@ -406,7 +533,7 @@
                         <li>Requirement analysis</li>
                         <li>Japanese to Thai translation</li>
                         <li>Work assignment in Japan</li>
-                        <li>STM32 Firmware hardware testing</li>
+                        <li>STM32 firmware hardware testing</li>
                         <li>Hardware demo software C++.Net application development</li>
                     </ul>
                 </div>
@@ -422,19 +549,19 @@
                 </div>
                 <div class="experience-details">
                     <ul>
-                        <li>Hardware test and demo firmware/application development</li>
-                        <li>Data concentrator unit and data logger implementation</li>
-                        <li>C++ STM32 Firmware development</li>
+                        <li>Hardware testing and demo firmware/application development</li>
+                        <li>Data aggregation unit and data logger implementation</li>
+                        <li>C++ STM32 firmware development</li>
                         <li>Linux application development</li>
                         <li>MCU peripheral integration (SPI, I2C, FSMC, Ethernet, Socket, SOAP)</li>
                         <li>Bluetooth and IoT fieldbus integration (Zigbee, LoRA, Bluetooth, MQTT)</li>
                         <li>Embedded Linux image processing with Python applications</li>
                         <li>Database SQL and network programming</li>
                         <li>Image processing with OpenCV</li>
-                        <li>GUI supporting software in Visual C++/C# (.NET 4.0)</li>
+                        <li>GUI support software in Visual C++/C# (.NET 4.0)</li>
                         <li>Automation testing with C++, Python, Appium</li>
-                        <li>DevOps CI/CD Server (Jenkins)</li>
-                        <li>ERP tools implementation (Odoo)</li>
+                        <li>DevOps CI/CD server (Jenkins)</li>
+                        <li>ERP tool implementation (Odoo)</li>
                     </ul>
                 </div>
             </div>
@@ -446,9 +573,9 @@
             <h2>Awards & Recognition</h2>
             <div class="awards">
                 <ul>
-                    <li>ACM IPCP regional/national programming contest (2012/2011)</li>
+                    <li>ACM ICPC Regional/National Programming Contest (2012/2011)</li>
                     <li>TESA top gun rally (2011)</li>
-                    <li>Robot Design Contest southern area (2011)</li>
+                    <li>Robot design contest Southern region (2011)</li>
                 </ul>
             </div>
         </div>
@@ -494,7 +621,7 @@
                     <div class="icon">🌐</div>
                     <div class="contact-text">
                         <strong>Blog</strong><br>
-                        <a href="#" target="_blank">KritSitti's Blog</a>
+                        <a href="#" target="_blank">My Blog</a>
                     </div>
                 </div>
             </div>
